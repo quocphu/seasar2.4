@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="book/book.jsp">Book</a>
+<a href="book.jsp">Book</a>
 </body>
 </html>

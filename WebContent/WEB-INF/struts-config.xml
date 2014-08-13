@@ -6,62 +6,53 @@
 
 <struts-config>
 
-	<!-- ======================================== Form Bean Definitions -->
+<!-- ======================================== Form Bean Definitions -->
 
-	<!-- ================================= Global Exception Definitions -->
+    <form-beans>
+    </form-beans>
 
-	<global-exceptions>
-	</global-exceptions>
+<!-- ================================= Global Exception Definitions -->
 
-	<!-- =================================== Global Forward Definitions -->
+    <global-exceptions>
+        <!--
+        <exception
+            key="errors.global.exception"
+            type="java.lang.Exception"
+            path="/pages/error/error.jsp"/>
+        -->
+    </global-exceptions>
 
-	<global-forwards>
-		<forward name="success" path="/success.jsp" />
-	</global-forwards>
+<!-- =================================== Global Forward Definitions -->
 
-	<!-- =================================== Action Mapping Definitions -->
-	<action-mappings>
-		<action input="/login.jsp" path="/login"
-			type="examples.action.impl.LoginActionImpl" name="loginRequest">
-			<forward name="success" path="/success.jsp" />
-			<forward name="failure" path="/failure.jsp" />
-		</action>
+    <global-forwards>
+    </global-forwards>
 
-		<action input="/book/book.jsp" path="/book/book"
-			type="examples.action.impl.BookActionImpl">
-			<forward name="success" path="/book/book.jsp" />
-		</action>
-	</action-mappings>
-	<!-- ===================================== Controller Configuration -->
+<!-- =================================== Action Mapping Definitions -->
 
-	<controller catalog="s2struts">
-		<set-property key="ACTION_CONTEXT_CLASS"
-			value="org.seasar.struts.processor.contexts.S2ServletActionContext" />
-	</controller>
-	<!-- <controller processorClass="org.seasar.struts.processor.S2RequestProcessor"/> 
-		<controller processorClass="org.seasar.struts.processor.S2TilesRequestProcessor"/> 
-		<controller processorClass="org.apache.struts.action.RequestProcessor"/> -->
+    <action-mappings type="org.apache.struts.action.RequestActionMapping">
+    </action-mappings>
 
-	<!-- ================================ Message Resources Definitions -->
+<!-- ===================================== Controller Configuration -->
 
-	<message-resources parameter="application" />
+    <controller catalog="s2struts">
+      <set-property key="ACTION_CONTEXT_CLASS" value="org.seasar.struts.processor.contexts.S2ServletActionContext"/>
+    </controller>
 
-	<!-- ======================================= Plug Ins Configuration -->
+<!-- ================================ Message Resources Definitions -->
 
-	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-		<set-property property="pathnames"
-			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
-	</plug-in>
+    <message-resources parameter="application"/>
 
-	<!-- <plug-in className="org.seasar.struts.plugin.RegisterActionClassPlugIn"/> -->
+<!-- ======================================= Plug Ins Configuration -->
 
-	<plug-in
-		className="org.seasar.struts.lessconfig.plugin.AutoStrutsConfigRegisterPlugIn">
-		<set-property property="enableJar" value="false" />
-	</plug-in>
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml"/>
+    </plug-in>
+    
+    <plug-in className="org.seasar.struts.lessconfig.plugin.AutoStrutsConfigRegisterPlugIn"/>
 
-	<plug-in className="org.seasar.struts.hotdeploy.plugin.HotdeployPlugIn" />
-
+    <plug-in className="org.seasar.struts.hotdeploy.plugin.HotdeployPlugIn"/>
 
 </struts-config>
 
